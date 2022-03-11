@@ -10,6 +10,7 @@ environment:
   sdk: '>=2.13.0 <3.0.0'
 
 dependencies:
+  google_fonts: ^2.3.1
   app_links: ^2.2.1
   audio_service: ^0.18.3
   audiotagger: ^2.2.1
@@ -67,6 +68,10 @@ flutter:
   assets:
     # Add assets to the application.
     - assets/
+  fonts:
+    - family: Neon
+      fonts:
+        - asset: fonts/Neon.ttf
 
 msix_config:
   display_name: Rhythm

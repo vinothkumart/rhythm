@@ -8,7 +8,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 class AuthScreen extends StatefulWidget {
   @override
   _AuthScreenState createState() => _AuthScreenState();
@@ -64,24 +64,22 @@ class _AuthScreenState extends State<AuthScreen> {
       child: SafeArea(
         child: Scaffold(
           extendBodyBehindAppBar: true,
-          body: Stack(
+          body: Center(
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                Color.fromRGBO(81,16,183	,1),
+                Color.fromRGBO(209,25,103,1),
+                Color.fromRGBO(227,124,41,1	)
+              ],
+            )
+          ),
+          child:Stack(
             children: [
-              Positioned(
-                left: MediaQuery.of(context).size.width / 1.85,
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.width,
-                  child: const Image(
-                    image: AssetImage(
-                      'assets/icon-white-trans.png',
-                    ),
-                  ),
-                ),
-              ),
-              const GradientContainer(
-                child: null,
-                opacity: true,
-              ),
+              
               Column(
                 children: [
                   Row(
@@ -125,10 +123,11 @@ class _AuthScreenState extends State<AuthScreen> {
                               children: [
                                 RichText(
                                   text: TextSpan(
-                                    text: 'Rhythm\n',
+                                    text: 'rhythm\n',
                                     style: TextStyle(
                                       height: 0.97,
                                       fontSize: 80,
+                                      fontFamily: 'Neon',
                                       fontWeight: FontWeight.bold,
                                       color: Theme.of(context)
                                           .colorScheme
@@ -173,7 +172,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                   height: 57.0,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10.0),
-                                    color: Colors.grey[900],
+                                    color: Colors.white,
                                     boxShadow: const [
                                       BoxShadow(
                                         color: Colors.black26,
@@ -188,12 +187,15 @@ class _AuthScreenState extends State<AuthScreen> {
                                     textCapitalization:
                                         TextCapitalization.sentences,
                                     keyboardType: TextInputType.name,
+                                    style: TextStyle(color:Colors.black),
                                     decoration: InputDecoration(
+                                      
                                       focusedBorder: const UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           width: 1.5,
                                           color: Colors.transparent,
                                         ),
+                                        
                                       ),
                                       prefixIcon: Icon(
                                         Icons.person,
@@ -205,8 +207,9 @@ class _AuthScreenState extends State<AuthScreen> {
                                       hintText: AppLocalizations.of(context)!
                                           .enterName,
                                       hintStyle: const TextStyle(
-                                        color: Colors.white60,
+                                        color: Colors.black54,
                                       ),
+                                      
                                     ),
                                     onSubmitted: (String value) async {
                                       if (value.trim() == '') {
@@ -283,7 +286,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                         AppLocalizations.of(context)!
                                             .disclaimerText,
                                         style: TextStyle(
-                                          color: Colors.grey.withOpacity(0.7),
+                                          color: Colors.white.withOpacity(0.3),
                                         ),
                                       ),
                                     ],
@@ -301,6 +304,8 @@ class _AuthScreenState extends State<AuthScreen> {
             ],
           ),
         ),
+      ),
+    ),
       ),
     );
   }

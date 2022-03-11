@@ -11,6 +11,7 @@ class AppTheme {
     required BuildContext context,
   }) {
     return ThemeData(
+      fontFamily:'Neon',
       textSelectionTheme: TextSelectionThemeData(
         selectionHandleColor: currentTheme.currentColor(),
         cursorColor: currentTheme.currentColor(),
