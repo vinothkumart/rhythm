@@ -12,6 +12,7 @@ environment:
 dependencies:
   google_fonts: ^2.3.1
   app_links: ^2.2.1
+  awesome_notifications: any
   audio_service: ^0.18.3
   audiotagger: ^2.2.1
   # bitsdojo_window: ^0.1.1+1 #For Desktops

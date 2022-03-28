@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:audio_service/audio_service.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:rhythm/Helpers/config.dart';
 import 'package:rhythm/Helpers/handle_native.dart';
 import 'package:rhythm/Helpers/route_handler.dart';
@@ -80,6 +81,26 @@ Future<void> startService() async {
       notificationColor: Colors.grey[900],
     ),
   );
+  AwesomeNotifications().initialize(
+  // set the icon to null if you want to use the default app icon
+  'resource://drawable/ic_stat_music_note',
+  [
+    NotificationChannel(
+        channelGroupKey: 'basic_channel_group',
+        channelKey: 'progress_bar',
+        channelName: 'Basic notifications',
+        channelDescription: 'Notification channel for basic tests',
+        defaultColor: Color(0xFF9D50DD),
+        ledColor: Colors.white)
+  ],
+  // Channel groups are only visual and are not required
+  channelGroups: [
+    NotificationChannelGroup(
+        channelGroupkey: 'basic_channel_group',
+        channelGroupName: 'Basic group')
+  ],
+  debug: true
+);
   GetIt.I.registerSingleton<AudioPlayerHandler>(audioHandler);
   GetIt.I.registerSingleton<MyTheme>(MyTheme());
 }

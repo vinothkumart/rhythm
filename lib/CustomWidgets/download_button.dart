@@ -104,9 +104,7 @@ class _DownloadButtonState extends State<DownloadButton> {
                                       visible: !showValue,
                                       child: Center(
                                         child: Text(
-                                          down.progress == null
-                                              ? '0%'
-                                              : '${(100 * down.progress!).round()}%',
+                                          '${(100 * down.progress).round()}%',
                                         ),
                                       ),
                                     ),
@@ -210,10 +208,7 @@ class _MultiDownloadButtonState extends State<MultiDownloadButton> {
                 : Stack(
                     children: [
                       Center(
-                        child: Text(
-                          down.progress == null
-                              ? '0%'
-                              : '${(100 * down.progress!).round()}%',
+                        child: Text('${(100 * down.progress).round()}%',
                         ),
                       ),
                       Center(
@@ -327,11 +322,7 @@ class _AlbumDownloadButtonState extends State<AlbumDownloadButton> {
                 : Stack(
                     children: [
                       Center(
-                        child: Text(
-                          down.progress == null
-                              ? '0%'
-                              : '${(100 * down.progress!).round()}%',
-                        ),
+                        child: Text('${(100 * down.progress).round()}%',),
                       ),
                       Center(
                         child: SizedBox(

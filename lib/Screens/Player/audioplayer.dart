@@ -626,26 +626,26 @@ class _PlayScreenState extends State<PlayScreen> {
                                   ],
                                 ),
                               ),
-                              if (Hive.box('settings').get(
-                                'supportEq',
-                                defaultValue: false,
-                              ) as bool)
-                                PopupMenuItem(
-                                  value: 4,
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.equalizer_rounded,
-                                        color:
-                                            Theme.of(context).iconTheme.color,
-                                      ),
-                                      const SizedBox(width: 10.0),
-                                      Text(
-                                        AppLocalizations.of(context)!.equalizer,
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                              // if (Hive.box('settings').get(
+                              //   'supportEq',
+                              //   defaultValue: false,
+                              // ) as bool)
+                              //   PopupMenuItem(
+                              //     value: 4,
+                              //     child: Row(
+                              //       children: [
+                              //         Icon(
+                              //           Icons.equalizer_rounded,
+                              //           color:
+                              //               Theme.of(context).iconTheme.color,
+                              //         ),
+                              //         const SizedBox(width: 10.0),
+                              //         Text(
+                              //           AppLocalizations.of(context)!.equalizer,
+                              //         ),
+                              //       ],
+                              //     ),
+                              //   ),
                               PopupMenuItem(
                                 value: 3,
                                 child: Row(

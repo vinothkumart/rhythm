@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:audiotagger/audiotagger.dart';
 import 'package:audiotagger/models/tag.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:rhythm/CustomWidgets/snackbar.dart';
 import 'package:rhythm/Helpers/lyrics.dart';
 import 'package:rhythm/Services/ext_storage_provider.dart';
@@ -29,7 +30,7 @@ class Download with ChangeNotifier {
       .get('createDownloadFolder', defaultValue: false) as bool;
   bool createYoutubeFolder = Hive.box('settings')
       .get('createYoutubeFolder', defaultValue: false) as bool;
-  double? progress = 0.0;
+  double progress = 0.0;
   String lastDownloadId = '';
   bool downloadLyrics =
       Hive.box('settings').get('downloadLyrics', defaultValue: false) as bool;
@@ -251,7 +252,7 @@ class Download with ChangeNotifier {
     String fileName,
     Map data,
   ) async {
-    progress = null;
+    progress = 0.0;
     notifyListeners();
     String? filepath;
     late String filepath2;
@@ -315,11 +316,31 @@ class Download with ChangeNotifier {
     final int total = response.contentLength ?? 0;
     int recieved = 0;
     response.stream.asBroadcastStream();
-    response.stream.listen((value) {
+    response.stream.listen((value) async {
       _bytes.addAll(value);
       try {
         recieved += value.length;
         progress = recieved / total;
+        int progressValue = 0;
+        if(progress!=null){
+          progressValue = progress.round() * 100;
+        }
+        if(progressValue<100){
+         await AwesomeNotifications().createNotification(
+              content: NotificationContent(
+                  id: 1,
+                  channelKey: 'progress_bar',
+                  title:'Downloading - $progressValue %',
+                  body: artname,
+                  category: NotificationCategory.Progress,
+                  notificationLayout: NotificationLayout.ProgressBar,
+                  progress: progressValue,
+                  locked: false,
+              ),
+          );
+        }else{
+          await AwesomeNotifications().dismiss(1);
+        }
         notifyListeners();
         if (!download) {
           client.close();
