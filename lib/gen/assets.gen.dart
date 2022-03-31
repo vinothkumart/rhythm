@@ -16,6 +16,7 @@ class Assets {
       AssetGenImage('assets/GitHub_Logo_White.png');
   static const AssetGenImage album = AssetGenImage('assets/album.png');
   static const AssetGenImage artist = AssetGenImage('assets/artist.png');
+  static const AssetGenImage authBg = AssetGenImage('assets/auth_bg.jpeg');
   static const AssetGenImage blackButton =
       AssetGenImage('assets/black-button.png');
   static const AssetGenImage cover = AssetGenImage('assets/cover.jpg');
